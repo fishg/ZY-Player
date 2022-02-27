@@ -265,9 +265,10 @@ import { mapMutations } from 'vuex'
 import pkg from '../../package.json'
 import { setting, sites, shortcut } from '../lib/dexie'
 import { localKey as defaultShortcuts } from '../lib/dexie/initData'
-import { shell, clipboard, remote, ipcRenderer } from 'electron'
+import { shell, clipboard, ipcRenderer } from 'electron'
 import db from '../lib/dexie/dexie'
 import zy from '../lib/site/tools'
+import * as remote from '@electron/remote'
 export default {
   name: 'setting',
   data () {

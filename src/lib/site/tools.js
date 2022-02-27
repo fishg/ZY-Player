@@ -5,13 +5,14 @@ import cheerio from 'cheerio'
 import { Parser as M3u8Parser } from 'm3u8-parser'
 // import FLVDemuxer from 'xgplayer-flv.js/src/flv/demux/flv-demuxer.js'
 import SocksProxyAgent from 'socks-proxy-agent'
+import * as remote from '@electron/remote'
 
 // axios使用系统代理  https://evandontje.com/2020/04/02/automatic-system-proxy-configuration-for-electron-applications/
 // xgplayer使用chromium代理设置，浏览器又默认使用系统代理 https://www.chromium.org/developers/design-documents/network-settings
 // 要在设置中添加代理设置，可参考https://stackoverflow.com/questions/37393248/how-connect-to-proxy-in-electron-webview
 const http = require('http')
 const https = require('http')
-const { remote } = require('electron')
+// const { remote } = require('electron')
 const win = remote.getCurrentWindow()
 const session = win.webContents.session
 const ElectronProxyAgent = require('electron-proxy-agent')

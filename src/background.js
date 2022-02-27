@@ -4,11 +4,13 @@ import { app, protocol, BrowserWindow, globalShortcut } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 import { initUpdater } from './lib/update/update'
+
 const isDevelopment = process.env.NODE_ENV !== 'production'
 // const log = require('electron-log') // 用于调试主程序
 
 app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors') // 允许跨域
 app.commandLine.appendSwitch('--ignore-certificate-errors', 'true') // 忽略证书相关错误
+require('@electron/remote/main').initialize()
 
 let win
 
@@ -21,12 +23,15 @@ function createWindow () {
     frame: false,
     resizable: true,
     webPreferences: {
+      plugins: true,
       webSecurity: false,
       enableRemoteModule: true,
-      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
-      allowRunningInsecureContent: false
+      nodeIntegration: true,
+      allowRunningInsecureContent: false,
+      contextIsolation: false
     }
   })
+  require("@electron/remote/main").enable(win.webContents)
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)

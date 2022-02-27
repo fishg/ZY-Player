@@ -23,7 +23,12 @@ module.exports = {
         mac: {
           icon: 'build/icon/icon.icns',
           category: 'public.app-category.developer-tools',
-          target: 'default',
+          target: {
+            target: 'dmg',
+            arch: [
+                'arm64'
+            ]
+        },
           extendInfo: {
             LSUIElement: 1
           }

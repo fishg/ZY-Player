@@ -13,10 +13,12 @@
     "postuninstall": "electron-builder install-app-deps",
     "electron:generate-icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
     "release": "vue-cli-service electron:build -p always",
-    "dist": "vue-cli-service electron:build --win --ia32"
+    "dist": "vue-cli-service electron:build --win --ia32",
+    "distmac": "vue-cli-service electron:build --mac --arm64"
   },
   "main": "background.js",
   "dependencies": {
+    "@electron/remote": "^2.0.5",
     "axios": "^0.21.2",
     "bootstrap-vue": "^2.21.2",
     "cheerio": "^1.0.0-rc.6",
@@ -58,7 +60,7 @@
     "@vue/eslint-config-standard": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
-    "electron": "^11.5.0",
+    "electron": "^17.1.0",
     "electron-devtools-installer": "^3.1.1",
     "eslint": "^7.20.0",
     "eslint-plugin-import": "^2.22.1",
@@ -68,7 +70,7 @@
     "eslint-plugin-vue": "^7.6.0",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",
-    "vue-cli-plugin-electron-builder": "2.0.0-rc.6",
+    "vue-cli-plugin-electron-builder": "2.1.1",
     "vue-template-compiler": "^2.6.12"
   }
 }

@@ -259,8 +259,10 @@ import mt from 'mousetrap'
 import Clickoutside from 'element-ui/src/utils/clickoutside'
 import { exec, execFile } from 'child_process'
 import PinyinMatch from 'pinyin-match'
+import * as remote from '@electron/remote'
 
-const { remote, clipboard } = require('electron')
+const { clipboard } = require('electron')
+
 const win = remote.getCurrentWindow()
 const URL = require('url')
 const VIDEO_DETAIL_CACHE = {}
